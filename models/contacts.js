@@ -16,3 +16,4 @@ const contactSchema = Schema(
 const Contact = model("contacts", contactSchema);
 
 module.exports = Contact;
+
