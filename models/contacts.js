@@ -9,6 +9,10 @@ const contactSchema = Schema(
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
+    },
   },
   { versionKey: false, timestamps: true }
 );
@@ -16,4 +20,3 @@ const contactSchema = Schema(
 const Contact = model("contacts", contactSchema);
 
 module.exports = Contact;
-
