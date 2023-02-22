@@ -1,9 +1,11 @@
 const { Schema, model } = require("mongoose");
 
+
 const userSchema = Schema(
   {
     password: {
       type: String,
+
       minlength: 8,
       required: [true, "Set password for user"],
     },
@@ -34,3 +36,4 @@ const userSchema = Schema(
 const User = model("user", userSchema);
 
 module.exports = User;
+

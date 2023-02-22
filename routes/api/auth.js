@@ -46,6 +46,7 @@ router.post("/register", async (req, res, next) => {
     }
 
     const hashPassword = await createHashPassword(password);
+
     const avatarURL = gravatar.url(email);
 
     const newUser = await User.create({
@@ -72,6 +73,7 @@ router.post("/login", async (req, res, next) => {
     if (error) {
       throw createError(400, error.message);
     }
+
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
@@ -83,6 +85,7 @@ router.post("/login", async (req, res, next) => {
     if (!isValidPassword) {
       throw createError(401, "Credentials are wrong");
     }
+
     const payload = { id: user._id };
 
     const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "1h" });
