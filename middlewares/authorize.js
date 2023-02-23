@@ -7,6 +7,11 @@ const { SECRET_KEY } = process.env
 const authorize = async (req, res, next) => {
   try {
     const { authorization } = req.headers
+
+    if (!authorization) {
+      throw createError('401', 'Not authorized')
+    }
+
     const [bearer, token] = authorization.split(' ')
     if (bearer !== 'Bearer') {
       throw createError(401, 'Not authorized')
