@@ -7,6 +7,7 @@ const tempDir = path.join(__dirname, "../", "tmp");
 const storage = multer.diskStorage({
   destination: tempDir,
   filename: (req, file, cb) => {
+
     cb(null, file.originalname);
   },
 });
@@ -25,3 +26,4 @@ const upload = function (req, res, next) {
 };
 
 module.exports = upload;
+
