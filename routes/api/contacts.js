@@ -67,12 +67,10 @@ router.get("/:contactId", authorize, async (req, res, next) => {
 router.post("/", authorize, async (req, res, next) => {
   try {
     const { _id: owner } = req.user;
-
     const { error } = contactSchema.validate(req.body);
     if (error) {
       throw createError(400, error.message);
     }
-
     const result = await Contact.create({ ...req.body, owner });
     res.status(201).json(result);
   } catch (error) {
